@@ -1,12 +1,8 @@
 <template>
   <div>
-    <header
-      class="w-full flex justify-center items-center p-2 shadow-lg bg-primary-color text-white"
-    >
+    <header>
       <router-link to="/">
-        <h1 class="font-bold text-2xl">
-          <span class="text-4xl text-secondary-color">TV</span>Movies
-        </h1>
+        <h1><span>TV</span>Movies</h1>
       </router-link>
     </header>
     <main>
@@ -15,20 +11,42 @@
   </div>
 </template>
 
-<script setup>
-import apikey from "./env";
-import axios from "axios";
-import { ref } from "vue";
+<style lang="scss">
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Fira Sans", sans-serif;
 
-const search = ref("");
+  &::selection {
+    background: transparentize(#42b883, 0.5);
+  }
+}
 
-const fetchMovie = () => {
-  axios
-    .get(`http://www.omdbapi.com/?apikey=${apikey.apikey}&t=${search.value}`)
-    .then((response) => {
-      console.log(response.data);
-    });
-};
-</script>
+body {
+  background-color: #35495e;
+}
 
-<style lang="scss" scoped></style>
+a {
+  text-decoration: none;
+}
+
+header {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px 16px;
+  background-color: #2c3d4e;
+  box-shadow: 0px 0px 6px rgba(0, 0, 0, 0.1);
+
+  h1 {
+    color: #fff;
+    font-size: 25px;
+
+    span {
+      color: #42b883;
+      font-size: 35px;
+    }
+  }
+}
+</style>
